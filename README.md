@@ -20,9 +20,6 @@ Este proyecto presenta un generador de discursos basado en LLMs
 ## Configuración
 [Explicación de cualquier configuración necesaria]
 
-## Contribución
-[Instrucciones para contribuir al proyecto]
-
 ## Licencia
 [Tipo de licencia]
 
