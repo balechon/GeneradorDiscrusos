@@ -1,0 +1,35 @@
+# Configuración básica del sitio
+title: Proyecto de NLP
+description: Resultados de mi proyecto de Procesamiento de Lenguaje Natural
+author: Tu Nombre
+
+# Configuración de Jekyll
+theme: jekyll-theme-minimal
+
+# Configuraciones adicionales
+show_downloads: false
+google_analytics: # Tu ID de Google Analytics (opcional)
+
+# Colecciones (si las necesitas)
+# collections:
+#   my_collection:
+#     output: true
+
+# Configuraciones de compilación
+markdown: kramdown
+highlighter: rouge
+
+# Exclusiones
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Plugins (opcional)
+# plugins:
+#   - jekyll-feed
+#   - jekyll-seo-tag

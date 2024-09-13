@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 # Proyecto de NLP: [Título del Proyecto]
 
 ## Introducción
