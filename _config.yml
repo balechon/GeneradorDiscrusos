@@ -5,7 +5,7 @@ show_downloads: false
 google_analytics:
 github:
   is_project_page: true
-  repository_url: https://github.com/balechon/GeneradorDiscusos
-  repository_name: GeneradorDiscusos
+  repository_url: https://github.com/balechon/GeneradorDiscursos
+  repository_name: GeneradorDiscursos
   owner_name: balechon
   owner_url: https://github.com/balechon

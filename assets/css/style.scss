@@ -7,6 +7,7 @@
 $header-bg-color: #159957;
 $header-bg-color-secondary: #155799;
 $section-headings-color: #159957;
+$header-font-color: #fff;
 
 // Ajusta el estilo del cuerpo del texto
 body {
@@ -17,7 +18,14 @@ body {
 }
 
 // Estiliza los encabezados
-h1, h2, h3 {
+h1{
+    color: $header-font-color;
+    padding: 1rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+h2, h3 {
   color: $section-headings-color;
   margin-top: 2rem;
   margin-bottom: 1rem;

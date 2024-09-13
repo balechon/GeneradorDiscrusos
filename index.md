@@ -53,4 +53,4 @@ Este proyecto demuestra el potencial de las técnicas avanzadas de NLP en la gen
 
 ---
 
- [Repositorio en GitHub](https://github.com/balechon/GeneradorDiscusos).
+ [Repositorio en GitHub](https://github.com/balechon/GeneradorDiscursos).
