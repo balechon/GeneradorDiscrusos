@@ -1,0 +1,45 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// Personaliza los colores
+$header-bg-color: #159957;
+$header-bg-color-secondary: #155799;
+$section-headings-color: #159957;
+
+// Ajusta el estilo del cuerpo del texto
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+// Estiliza los encabezados
+h1, h2, h3 {
+  color: $section-headings-color;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+// Mejora el aspecto de las listas
+ul, ol {
+  padding-left: 2rem;
+}
+
+// Estiliza las imágenes
+img {
+  max-width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+}
+
+// Añade un poco de estilo a los enlaces
+a {
+  color: #1e6bb8;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
