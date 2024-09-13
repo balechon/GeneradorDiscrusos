@@ -28,10 +28,11 @@ def ingest_docs(df,embeddings):
     # loader = DataFrameLoader(processed_df, page_content_column="content")
     # documents = loader.load()
 
-    print("****Loading documents***")
+    print("cargando documentos")
     PineconeVectorStore.from_documents(
         documents, embeddings, index_name="discursos-largos"
     )
-    print("****Loading to vectorstore done ***")
+    print("carga completa")
+
 
 

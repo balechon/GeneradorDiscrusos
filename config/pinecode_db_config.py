@@ -23,5 +23,3 @@ if INDEX_NAME not in pc.list_indexes():
 
 
 index = pc.Index(INDEX_NAME)
-
-print("Configuración completada.")

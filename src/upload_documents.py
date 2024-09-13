@@ -6,9 +6,10 @@ from langchain_community.embeddings import OllamaEmbeddings
 
 def run():
     embeddings = OllamaEmbeddings(model="llama3.1")
-    df = pd.read_excel(ROOT_PATH / "data" / "Speeches_corpus_translated.xlsx")
+    df = pd.read_json(ROOT_PATH / "data" / "Speeches_corpus.json", lines=True,encoding="utf-8")
+    df = df.query("origin == 'ted talks'")
     ingest_docs(df, embeddings)
-
+    print("Documentos subidos a Pinecone")
 if __name__ == "__main__":
     load_dotenv()
     run()
