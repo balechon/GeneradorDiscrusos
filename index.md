@@ -11,7 +11,7 @@ En la actualidad, el interés y la acumulación de información en formato de te
 
 Este proyecto tiene como objetivo desarrollar un generador de discursos de texto. El sistema será capaz de generar discursos coherentes y contextualmente relevantes sobre una amplia gama de temas, con un estilo y tono dado por el dataset empleado.
 
-En esta ocasion se va a explorar dos enfoques para la generación de discursos: Fine-Tuning y Retriever-Agnostic Generation (RAG).
+En esta ocasion se va a explorar dos enfoques para la generación de discursos: Fine-Tuning y Retrieval Augmented Generation (RAG).
 ## Objetivos
 
 - Desarrollar un modelo de lenguaje capaz de generar texto coherente y contextualmente relevante.
@@ -63,7 +63,13 @@ Algunos de los hiperparámetros empleados se resumen en la siguiente tabla:
 | optim | "adamw_bnb_8bit" | Optimizador AdamW con cuantización de 8 bits, que reduce el uso de memoria manteniendo el rendimiento. |
 | lr_scheduler_type | "linear" | Disminuye linealmente la tasa de aprendizaje durante el entrenamiento, lo que ayuda a la convergencia. |
 
-Para el entrenamiento se utilizó una GPU NVIDIA A100 con 32 GB de memoria. El proceso de fine-tuning tomó aproximadamente 2 horas.
+Para llevar a cabo el entrenamiento de este modelo, es necesario contar con un equipo que cumpla con los siguientes requerimientos:
+
+- **Memoria del Sistema (RAM)**: Se requiere un mínimo de 32 GB de RAM del sistema.
+- **Memoria de GPU**: Es necesaria una GPU con al menos 40 GB de memoria dedicada.
+- **Espacio en Disco**: Asegúrese de disponer de al menos 201 GB de espacio libre en disco.
+
+
 
 **Pérdida durante el entrenamiento**
 
@@ -71,11 +77,23 @@ Para el entrenamiento se utilizó una GPU NVIDIA A100 con 32 GB de memoria. El p
 
 ![Evaluación de Calidad](./figures/training_loss.png)
 
-Como se puede apreciar en el gráfico, la pérdida disminuye rápidamente durante las primeras épocas, especialmente en la primera donde cae de 1.8 a aproximadamente 0.7. Posteriormente, se observan caídas abruptas al inicio de las épocas 2 y 3, seguidas de una estabilización gradual. Finalmente, la pérdida converge alrededor de 0.1 en las épocas 4 y 5, indicando un ajuste exitoso del modelo a la tarea de generación de discursos.
+Como se puede apreciar en el gráfico, la pérdida disminuye rápidamente durante las primeras épocas, especialmente en la primera donde cae de 1.8 a aproximadamente 0.7. Posteriormente, se observan caídas abruptas al inicio de las épocas 2 y 3, seguidas de una estabilización gradual. Finalmente, la pérdida converge alrededor de 0.1 en las épocas 4 y 5.
 
-### Retriever-Agnostic Generation (RAG)
+### Retrieval Augmented Generation (RAG)
 
 ![Arquitectura RAG](./figures/RAG_flow.png)
+
+A diferencia de los métodos tradicionales de fine-tuning, RAG no requiere la generación de un nuevo modelo de lenguaje. En su lugar, utiliza un modelo pre-entrenado en combinación con una base de datos vectorial, donde se almacena la información de la cual se realizará la recuperación. En nuestro caso específico, esta información consiste en los discursos de TED.
+
+Como se ilustra en la figura anterior, la arquitectura RAG implementada en este proyecto se compone de los siguientes elementos clave:
+
+1. Base de Datos Vectorial: Se ha empleado Pinecone, un servicio de indexación y búsqueda de vectores de alta velocidad. Pinecone permite realizar búsquedas de vectores similares en tiempo real, lo que es crucial para la eficiencia del sistema RAG.
+2. Modelo de Embedding: Para la vectorización del texto, se utilizó el modelo de embedding LLAMA3.1. Este modelo pre-entrenado convierte el texto en representaciones vectoriales densas, capturando efectivamente la semántica y el contexto de las palabras.
+3. Cálculo de Similitud: La distancia coseno se empleó como métrica para calcular la similitud entre los vectores de texto. Esta medida es particularmente efectiva para comparar la orientación de vectores en espacios de alta dimensionalidad.
+4. Recuperación de Información: El sistema se configuró para recuperar los 5 discursos más similares al texto de entrada. Este número se determinó como un equilibrio óptimo entre la diversidad de información y la relevancia.
+5. Filtrado de Resultados: Se estableció un umbral de similitud de 0.7 para filtrar los resultados. Este umbral asegura que solo se consideren los discursos con una alta relevancia semántica.
+6. Generación Guiada: Se implementó un sistema de prompting para guiar la generación de texto basada en la información recuperada. Este enfoque permite una generación más contextualizada y precisa.
+
 ## Resultados
 
 
@@ -109,12 +127,9 @@ El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos
 
 Este proyecto demuestra el potencial de las técnicas avanzadas de NLP en la generación de contenido textual complejo. Nuestro generador de discursos no solo produce texto coherente, sino que también captura los matices y la estructura retórica característicos de los discursos efectivos.
 
-## Trabajo Futuro
+## Referencias
 
-- Implementar control más fino sobre el tono y estilo del discurso.
-- Explorar la posibilidad de generar discursos en múltiples idiomas.
-- Desarrollar una interfaz web para hacer la herramienta más accesible.
-
----
-
- [Repositorio en GitHub](https://github.com/balechon/GeneradorDiscursos).
+- [Microsoft Phi3 Mini-4K](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct)
+- [LLAMA3.1](https://huggingface.co/llama-3-1)
+- [Retrieval-Augmented Generation](https://arxiv.org/pdf/2312.10997)
+- [Repositorio en GitHub](https://github.com/balechon/GeneradorDiscursos).
