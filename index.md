@@ -121,7 +121,8 @@ Para el uso de las herramientas desarrolladas en este proyecto, se ha creado una
 
 La métrica de perplexity se utiliza para evaluar la calidad de los modelos de lenguaje. En términos generales, la perplexity mide cuán bien un modelo de lenguaje puede predecir una secuencia de palabras. Un valor de perplexity más bajo indica que el modelo es mejor para predecir el texto.
 
-![Perplexity](./figures/perplex.png)
+<img src="./figures/perplex.png" width="400" height="320" alt="Descripción de la imagen">
+
 
 Basado en la figura anterior el enfoque RAG logra una mejor capacidad predictiva y coherencia en la generación de texto en comparación con el modelo Phi-3 fine-tuned.
 ## Conclusiones
