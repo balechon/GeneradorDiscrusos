@@ -110,7 +110,42 @@ Para el uso de las herramientas desarrolladas en este proyecto, se ha creado una
 ![Aplicación](./figures/APP.png)
 
 ## Resultados
+### Ejempos de Discursos Generados
+**Fine-Tuning**
+```
+Prompt: Estimados colegas, hoy nos reunimos para discutir sobre
+Discurso generado: Estimados colegas, hoy nos reunimos para discutir sobre la desigualdad y la pobreza a lo largo de la historia, desde las origines hasta la actualidad. Incluye datos y gráficos impactantes que ilustren la situación aún más desfavorable de las personas en las comunidades trabajadoras.
+ ¿Podemos atrevernos a ser optimistas? Bueno, la tesis de los mil millones de personas atrapadas en países pobres o en crisis es que mil millón de nosotros viven en comunidad trabajadora,
 
+--------------------------------------------------
+
+Prompt: En este día tan especial, quiero agradecer a todos por
+Discurso generado: En este día tan especial, quiero agradecer a todos por venir a celebrar la vida y la cultura de nuestros abuelos. Mi padre me dijo cuando era pequeño: "recuerdan que cuando estamos ausentes, la tierra nos sorprende con lo que trae". Y lo sorpe con el aniversario de la llegada de los primeros colonos en Jamestown, Virginia, en 1607. Pero lo más romántico que me ha pasado en línea comenzó como una charla TED en Tierra de Talk que hice en honor a un hombre que no
+
+--------------------------------------------------
+
+Prompt: La situación actual nos presenta desafíos, pero también oportunidades para
+Discurso generado: La situación actual nos presenta desafíos, pero también oportunidades para salir de esta situacion. Y voy a intentar ahorrarte tiempo y dinero y lo explicaré en los próximos 18 minutos.
+ Voy a hablar sobre la economía, la ética y la psicología detrás del fraude en las grandes corporaciones, explorando por qué las personas eligen comportamientos engañosos y las implicaciones de estas decisiones.
+```
+**RAG**
+```
+Prompt: Que trate sobre la importancia de la educación en la sociedad actual
+Discursos generado: Queridos amigos y colegas, hoy nos reunimos para reflexionar sobre un pilar fundamental de nuestra sociedad: la educación. En un mundo que avanza a pasos agigantados, donde la tecnología y la creatividad se entrelazan, la educación se erige como la brújula que nos guía hacia un futuro más brillante. Permítanme comenzar con una anécdota que ilustra la esencia de lo que significa aprender y crecer. Recientemente, acompañé a una joven en un viaje a Nueva York. 
+Mientras caminábamos, se detuvo en seco al ver un toldo rojo de una tienda de muñecas que había marcado su infancia. Recordó cómo, a los cinco años, su corazón estalló de emoción al descubrir ese lugar. 
+
+--------------------------------------------------
+
+Promt: Que trate sobre el feminismo y la igualdad de género
+Discurso:En un mundo donde las voces de las mujeres han sido silenciadas durante demasiado tiempo, es fundamental que nos unamos para crear un futuro donde cada individuo, sin importar su género, tenga las mismas oportunidades y derechos. 
+Imaginemos un mundo donde cada niña pueda soñar sin límites, donde cada mujer pueda caminar con la cabeza en alto, y donde cada hombre pueda ser un aliado en esta lucha. 
+
+--------------------------------------------------
+
+Prompt: Que trate sobre la tecnologia y su impacto en la sociedad
+Hoy quiero hablarles sobre un tema que nos afecta a todos, un tema que ha transformado nuestras vidas de maneras que a menudo no reconocemos: la tecnología. En un mundo donde la innovación avanza a pasos agigantados, es fundamental reflexionar sobre cómo estas herramientas moldean nuestra sociedad, nuestras interacciones y, en última instancia, nuestra humanidad.
+Recientemente, mientras caminaba con una persona muy especial, nos detuvimos frente a un toldo rojo de una tienda de muñecas que evocó en ella recuerdos de su infancia.
+```
 ### Perplexity
 
 La métrica de perplexity se utiliza para evaluar la calidad de los modelos de lenguaje. En términos generales, la perplexity mide cuán bien un modelo de lenguaje puede predecir una secuencia de palabras. Un valor de perplexity más bajo indica que el modelo es mejor para predecir el texto.
