@@ -87,12 +87,38 @@ A diferencia de los métodos tradicionales de fine-tuning, RAG no requiere la ge
 
 Como se ilustra en la figura anterior, la arquitectura RAG implementada en este proyecto se compone de los siguientes elementos clave:
 
-1. Base de Datos Vectorial: Se ha empleado Pinecone, un servicio de indexación y búsqueda de vectores de alta velocidad. Pinecone permite realizar búsquedas de vectores similares en tiempo real, lo que es crucial para la eficiencia del sistema RAG.
-2. Modelo de Embedding: Para la vectorización del texto, se utilizó el modelo de embedding LLAMA3.1. Este modelo pre-entrenado convierte el texto en representaciones vectoriales densas, capturando efectivamente la semántica y el contexto de las palabras.
-3. Cálculo de Similitud: La distancia coseno se empleó como métrica para calcular la similitud entre los vectores de texto. Esta medida es particularmente efectiva para comparar la orientación de vectores en espacios de alta dimensionalidad.
-4. Recuperación de Información: El sistema se configuró para recuperar los 5 discursos más similares al texto de entrada. Este número se determinó como un equilibrio óptimo entre la diversidad de información y la relevancia.
-5. Filtrado de Resultados: Se estableció un umbral de similitud de 0.7 para filtrar los resultados. Este umbral asegura que solo se consideren los discursos con una alta relevancia semántica.
-6. Generación Guiada: Se implementó un sistema de prompting para guiar la generación de texto basada en la información recuperada. Este enfoque permite una generación más contextualizada y precisa.
+1. **Base de Datos Vectorial**: Se ha empleado Pinecone, un servicio de indexación y búsqueda de vectores de alta velocidad. Pinecone permite realizar búsquedas de vectores similares en tiempo real, lo que es crucial para la eficiencia del sistema RAG.
+2. **Modelo de Embedding**: Para la vectorización del texto, se utilizó el modelo de embedding LLAMA3.1. Este modelo pre-entrenado convierte el texto en representaciones vectoriales densas, capturando efectivamente la semántica y el contexto de las palabras.
+3. **Cálculo de Similitud**: La distancia coseno se empleó como métrica para calcular la similitud entre los vectores de texto. Esta medida es particularmente efectiva para comparar la orientación de vectores en espacios de alta dimensionalidad.
+4. **Recuperación de Información**: El sistema se configuró para recuperar los 5 discursos más similares al texto de entrada. Este número se determinó como un equilibrio óptimo entre la diversidad de información y la relevancia.
+5. **Filtrado de Resultados**: Se estableció un umbral de similitud de 0.7 para filtrar los resultados. Este umbral asegura que solo se consideren los discursos con una alta relevancia semántica.
+6. **Generación Guiada**: Se implementó un sistema de prompting para guiar la generación de texto basada en la información recuperada. Este enfoque permite una generación más contextualizada y precisa.
+
+Para implementar el flujo de trabajo RAG de manera eficiente y escalable, el sistema se basó en la librería LangChain. Esta herramienta de código proporciona una capa de abstraccion que simplifica la integración de modelos de lenguaje y bases de datos vectoriales.
+
+Un aspecto crucial de la implementación RAG es el diseño del prompt utilizado para guiar la generación de discursos. A continuación, se presenta el prompt utilizado en este proyecto:
+```
+Eres un experto en la creación de discursos. 
+Utiliza UNICAMENTE el contexto proporcionado para crear un discurso convincente y bien estructurado sobre el tema dado.
+
+Contexto:
+{context}
+
+Tema del discurso: {question}
+
+Por favor, genera un discurso que:
+1. Tenga una introducción atractiva
+2. Desarrolle los puntos principales de manera clara y concisa
+3. Incluya ejemplos o anécdotas relevantes
+4. Termine con una conclusión impactante
+
+Discurso:
+```
+## Implementación
+
+Para el uso de las herramientas desarrolladas en este proyecto, se ha creado una aplicación basada en streamlit que permite a los usuarios generar discursos personalizados.
+
+![Aplicacion](./figures/APP.png)
 
 ## Resultados
 
@@ -106,22 +132,6 @@ Nuestro modelo ha demostrado una capacidad impresionante para generar discursos 
 
 El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos convincentes sobre una amplia gama de temas, desde política y economía hasta tecnología y cultura.
 
-### Comparacion Fine-Tuning vs RAG
-
-
-| Nota | Explicación |
-|------|-------------|
-| No worries, it's a common mix-up! | The key difference is that permutations care about the order of arrangement, while combinations don't. Think of permutations as the 'pickier' of the two. 😉 |
-
-
-## Implementación
-
-
-
-*Gráfico 1: Fine Tunning Phi3*
-
-
-*Gráfico 2: Distribución de temas en los discursos generados exitosamente*
 
 ## Conclusiones
 
