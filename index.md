@@ -1,19 +1,26 @@
 ---
 layout: default
-title: Generador de Discursos - Proyecto NLP
+title: Proyecto Natural Language Processing
 ---
 
-# Generador de Discursos con NLP
+# Generador de Discursos de Texto
 
 ## Introducción
 
-Este proyecto utiliza técnicas avanzadas de Procesamiento de Lenguaje Natural (NLP) para generar discursos automáticamente. Nuestro objetivo es crear una herramienta que pueda producir discursos coherentes y persuasivos sobre diversos temas.
+En la actualidad, el interés y la acumulación de información en formato de texto, incluyendo redes sociales, documentos, reseñas, opiniones y encuestas, están creciendo exponencialmente. Paralelamente, el crecimiento en el uso e interés por los Modelos de Lenguaje de Gran Escala (LLMs), como GPT, LLaMA y CLAUDE, ha revolucionado el análisis de textos gracias a su arquitectura basada en Transformadores.
 
+Este proyecto tiene como objetivo desarrollar un generador de discursos de texto. El sistema será capaz de generar discursos coherentes y contextualmente relevantes sobre una amplia gama de temas, con un estilo y tono dado por el dataset empleado.
 ## Objetivos
 
 - Desarrollar un modelo de lenguaje capaz de generar texto coherente y contextualmente relevante.
 - Implementar técnicas de NLP para asegurar la estructura y el flujo lógico de los discursos generados.
 - Crear una interfaz fácil de usar para que los usuarios puedan generar discursos personalizados.
+
+## Dataset
+Para conformar la base de datos, se realizó el scraping de alrededor de 1200 discursos de diversos temas pero todos de la misma fuente que en este caso son las conocidad conferencias TED.
+Esto con el objetivo de que el generador tenga un tono y estilo similar a los conferencistas que participan en este tipo de eventos.
+
+![Evaluación de Calidad](https://upload.wikimedia.org/wikipedia/commons/a/aa/TED_three_letter_logo.svg)
 
 ## Metodología
 
@@ -23,7 +30,11 @@ Nuestro enfoque se basa en el uso de modelos de lenguaje de última generación,
 2. Entrenamiento y ajuste fino del modelo de lenguaje.
 3. Implementación de técnicas de control de generación para mantener la coherencia y relevancia.
 
+
+
 ## Resultados
+
+### Perdida en el Entrenamiento
 
 ### Calidad del Texto Generado
 
@@ -33,7 +44,10 @@ Nuestro modelo ha demostrado una capacidad impresionante para generar discursos 
 
 El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos convincentes sobre una amplia gama de temas, desde política y economía hasta tecnología y cultura.
 
-## Visualizaciones
+### Comparacion Fine-Tuning vs RAG
+
+
+## Implementación
 
 ![Evaluación de Calidad](./figures/training_loss.png)
 
