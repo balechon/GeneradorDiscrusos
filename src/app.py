@@ -1,14 +1,20 @@
 import streamlit as st
-from modules.speech_generator import SpeechGenerator
-
+from modules.speech_generator_rag import SpeechGenerator
+from modules.speech_generator_phi import generate_speech, load_model
 st.set_page_config(page_title="Generador de Discursos")
 st.title("Generador de Discursos")
 
 @st.cache_resource
 def get_speech_generator():
     return SpeechGenerator()
+@st.cache_models
+def get_phi_models():
+    model, tokenizer = load_model()
+    return model, tokenizer
+
 
 generator = get_speech_generator()
+phi_model, phi_tokenizer = get_phi_models()
 
 def clear_session():
     for key in list(st.session_state.keys()):
@@ -30,8 +36,7 @@ if col1.button("Generar Discurso"):
             if modelo_seleccionado == "RAG LLAMA Model":
                 speech = generator.generate_speech(topic)
             else:
-                # Aquí irá la lógica para el Modelo 2
-                speech = "Este es un placeholder para el Modelo 2. Implementa la lógica específica aquí."
+                speech = generate_speech(phi_model, phi_tokenizer, topic)
         st.session_state.speech = speech
         st.subheader("Discurso Generado:")
         st.write(speech)
