@@ -44,7 +44,7 @@ class SpeechGenerator:
         return PromptTemplate(template=template, input_variables=["context", "question"])
 
     def _setup_chain(self):
-        retriever = self.vectorstore.as_retriever(search_type="similarity", k=2)
+        retriever = self.vectorstore.as_retriever(search_type="similarity", k=5)
         return RetrievalQA.from_chain_type(
             llm=self.llm,
             chain_type="stuff",
