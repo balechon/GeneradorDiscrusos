@@ -1,5 +1,6 @@
 from langchain_pinecone import PineconeVectorStore
 from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaLLM
 from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
@@ -12,6 +13,7 @@ class SpeechGenerator:
         load_dotenv()
         self.index_name = os.getenv("INDEX_NAME")
         self.embeddings = OllamaEmbeddings(model="llama3.1")
+        # self.llm = OllamaLLM(model="llama3.1")
         self.llm = ChatOpenAI(model_name="gpt-4o-mini",temperature=0)
         self.vectorstore = self._setup_vectorstore()
         self.chain = self._setup_chain()
@@ -42,7 +44,7 @@ class SpeechGenerator:
         return PromptTemplate(template=template, input_variables=["context", "question"])
 
     def _setup_chain(self):
-        retriever = self.vectorstore.as_retriever(search_type="similarity")
+        retriever = self.vectorstore.as_retriever(search_type="similarity", k=2)
         return RetrievalQA.from_chain_type(
             llm=self.llm,
             chain_type="stuff",
