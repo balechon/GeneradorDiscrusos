@@ -10,6 +10,8 @@ title: Proyecto Natural Language Processing
 En la actualidad, el interés y la acumulación de información en formato de texto, incluyendo redes sociales, documentos, reseñas, opiniones y encuestas, están creciendo exponencialmente. Paralelamente, el crecimiento en el uso e interés por los Modelos de Lenguaje de Gran Escala (LLMs), como GPT, LLaMA y CLAUDE, ha revolucionado el análisis de textos gracias a su arquitectura basada en Transformadores.
 
 Este proyecto tiene como objetivo desarrollar un generador de discursos de texto. El sistema será capaz de generar discursos coherentes y contextualmente relevantes sobre una amplia gama de temas, con un estilo y tono dado por el dataset empleado.
+
+En esta ocasion se va a explorar dos enfoques para la generación de discursos: Fine-Tuning y Retriever-Agnostic Generation (RAG).
 ## Objetivos
 
 - Desarrollar un modelo de lenguaje capaz de generar texto coherente y contextualmente relevante.
@@ -24,29 +26,59 @@ Esto con el objetivo de que el generador tenga un tono y estilo similar a los co
 
 ## Metodología
 
-### Fine-Tuning
-Para entrenar el modelo, se utilizó un enfoque de fine-tuning, que consiste en ajustar un modelo de lenguaje pre-entrenado a un conjunto de datos específico. En este caso, se utilizó el modelo PHI3 de Microsoft como punto de partida y se lo ajustó al dataset de discursos de TED.
 
-El dataset tiene que ser formateado de manera que el modelo pueda entenderlo y aprender de él. Para ello, Phi3 necesit ade una estrucutra como de la siguiente forma:
-    
-    ``` 
-    user: 
-    Crea un discurso al estilo TED-Talk que suene como si fuera dado por un experto en [CAMPO] y que trate sobre [Tematicas]
 
-    asistant:
-    no sé si te has dado cuenta, pero ha habido una serie de libros que han salido últimamente contemplando o especulando sobre la cognición y la vida emocional..
-    ```
-
+## Fine-Tuning
 
 ![Arquitectura RAG](./figures/fine_tunning.png)
+
+
+El enfoque de fine-tuning consiste en ajustar un modelo de lenguaje pre-entrenado a un conjunto de datos específico. En este proyecto, se utilizó el modelo [Phi3 Mini-4K](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) de Microsoft como punto de partida y se ajustó al dataset de discursos de TED.
+
+### Formato del Dataset
+
+Para que el modelo pueda entender y aprender del dataset, el texto de entrada se ha formateado de la siguiente manera:
+
+```
+user: 
+Crea un discurso al estilo TED-Talk que suene como si fuera dado por un experto en [campo] y que trate sobre [temáticas]
+
+assistant:
+[Contenido del discurso]
+```
+
+Los campos `[campo]` y `[temáticas]` variarán dependiendo de los datos disponibles de discursos en el dataset.
+
+
+Para el entrenamiento se definieron los hiperparámetros para optimizar el rendimiento del modelo teniendo en cuenta las limitaciones de recursos computacionales y la necesidad de un entrenamiento eficiente.
+Algunos de los hiperparámetros empleados se resumen en la siguiente tabla:
+
+
+| Hiperparámetro | Valor | Explicación |
+|----------------|-------|-------------|
+| per_device_train_batch_size | 2 | Número de muestras procesadas simultáneamente por dispositivo. Un valor bajo (2) permite entrenar con recursos de GPU limitados. |
+| gradient_accumulation_steps | 8 | Acumula gradientes de varios pasos antes de actualizar los pesos. Ayuda a simular batches más grandes sin aumentar el uso de memoria. |
+| learning_rate | 1e-4 | Tasa de aprendizaje. Un valor de 0.0001 es típico para fine-tuning, balanceando la velocidad de aprendizaje y la estabilidad. |
+| num_train_epochs | 5 | Número de veces que el modelo pasa por todo el dataset durante el entrenamiento. |
+| optim | "adamw_bnb_8bit" | Optimizador AdamW con cuantización de 8 bits, que reduce el uso de memoria manteniendo el rendimiento. |
+| lr_scheduler_type | "linear" | Disminuye linealmente la tasa de aprendizaje durante el entrenamiento, lo que ayuda a la convergencia. |
+
+Para el entrenamiento se utilizó una GPU NVIDIA A100 con 32 GB de memoria. El proceso de fine-tuning tomó aproximadamente 2 horas.
+
+**Pérdida durante el entrenamiento**
+
+
+
+![Evaluación de Calidad](./figures/training_loss.png)
+
+Como se puede apreciar en el gráfico, la pérdida disminuye rápidamente durante las primeras épocas, especialmente en la primera donde cae de 1.8 a aproximadamente 0.7. Posteriormente, se observan caídas abruptas al inicio de las épocas 2 y 3, seguidas de una estabilización gradual. Finalmente, la pérdida converge alrededor de 0.1 en las épocas 4 y 5, indicando un ajuste exitoso del modelo a la tarea de generación de discursos.
 
 ### Retriever-Agnostic Generation (RAG)
 
 ![Arquitectura RAG](./figures/RAG_flow.png)
 ## Resultados
 
-### Perdida en el Entrenamiento
-![Evaluación de Calidad](./figures/training_loss.png)
+
 
 ### Calidad del Texto Generado
 
@@ -70,7 +102,7 @@ El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos
 
 *Gráfico 1: Fine Tunning Phi3*
 
-![Versatilidad Temática](path/to/topic_versatility_chart.png)
+
 *Gráfico 2: Distribución de temas en los discursos generados exitosamente*
 
 ## Conclusiones
