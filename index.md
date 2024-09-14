@@ -122,16 +122,9 @@ Para el uso de las herramientas desarrolladas en este proyecto, se ha creado una
 
 ## Resultados
 
+### Perplexity
 
-
-### Calidad del Texto Generado
-
-Nuestro modelo ha demostrado una capacidad impresionante para generar discursos que son coherentes, persuasivos y estilísticamente variados. En pruebas ciegas, el 85% de los evaluadores no pudieron distinguir entre discursos generados por nuestro sistema y discursos escritos por humanos.
-
-### Versatilidad Temática
-
-El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos convincentes sobre una amplia gama de temas, desde política y economía hasta tecnología y cultura.
-
+![Aplicacion](./figures/perplex.png)
 
 ## Conclusiones
 
