@@ -17,7 +17,7 @@ def ingest_docs(df,embeddings):
     #
     documents = []
     for _, row in df.iterrows():
-        chunks = split_text(row['transcript'])
+        chunks = split_text(row['translated_speech'])
         for chunk in chunks:
             documents.append(Document(
                 page_content= chunk,
@@ -28,7 +28,7 @@ def ingest_docs(df,embeddings):
     # loader = DataFrameLoader(processed_df, page_content_column="content")
     # documents = loader.load()
 
-    print("cargando documentos")
+    print("\ncargando documentos")
     PineconeVectorStore.from_documents(
         documents, embeddings, index_name="discursos-largos"
     )

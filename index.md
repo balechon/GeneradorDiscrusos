@@ -35,8 +35,9 @@ El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos
 
 ## Visualizaciones
 
-![Evaluación de Calidad](path/to/quality_evaluation_chart.png)
-*Gráfico 1: Comparación de la calidad percibida entre discursos generados y escritos por humanos*
+![Evaluación de Calidad](./figures/training_loss.png)
+
+*Gráfico 1: Fine Tunning Phi3*
 
 ![Versatilidad Temática](path/to/topic_versatility_chart.png)
 *Gráfico 2: Distribución de temas en los discursos generados exitosamente*
