@@ -120,7 +120,8 @@ Discurso generado: Estimados colegas, hoy nos reunimos para discutir sobre la de
 --------------------------------------------------
 
 Prompt: En este día tan especial, quiero agradecer a todos por
-Discurso generado: En este día tan especial, quiero agradecer a todos por venir a celebrar la vida y la cultura de nuestros abuelos. Mi padre me dijo cuando era pequeño: "recuerdan que cuando estamos ausentes, la tierra nos sorprende con lo que trae". Y lo sorpe con el aniversario de la llegada de los primeros colonos en Jamestown, Virginia, en 1607. Pero lo más romántico que me ha pasado en línea comenzó como una charla TED en Tierra de Talk que hice en honor a un hombre que no
+Discurso generado: En este día tan especial, quiero agradecer a todos por venir a celebrar la vida y la cultura de nuestros abuelos. Mi padre me dijo cuando era pequeño: "recuerdan que cuando estamos ausentes, la tierra nos sorprende con lo que trae". Y lo sorpe con el aniversario de la llegada de los primeros colonos en Jamestown, Virginia, en 1607. 
+Pero lo más romántico que me ha pasado en línea comenzó como una charla TED en Tierra de Talk que hice en honor a un hombre que no
 
 --------------------------------------------------
 
