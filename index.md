@@ -24,17 +24,15 @@ Esto con el objetivo de que el generador tenga un tono y estilo similar a los co
 
 ## Metodología
 
-Nuestro enfoque se basa en el uso de modelos de lenguaje de última generación, como GPT (Generative Pre-trained Transformer), combinados con técnicas de fine-tuning específicas para la generación de discursos. El proceso incluye:
+### Fine-Tuning
+![Evaluación de Calidad](./figures/fine_tunning.png)
+### Retriever-Agnostic Generation (RAG)
 
-1. Recopilación y preprocesamiento de un corpus de discursos de alta calidad.
-2. Entrenamiento y ajuste fino del modelo de lenguaje.
-3. Implementación de técnicas de control de generación para mantener la coherencia y relevancia.
-
-
-
+![Arquitectura RAG](./figures/RAG_flow.png)
 ## Resultados
 
 ### Perdida en el Entrenamiento
+![Evaluación de Calidad](./figures/training_loss.png)
 
 ### Calidad del Texto Generado
 
@@ -49,7 +47,7 @@ El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos
 
 ## Implementación
 
-![Evaluación de Calidad](./figures/training_loss.png)
+
 
 *Gráfico 1: Fine Tunning Phi3*
 
