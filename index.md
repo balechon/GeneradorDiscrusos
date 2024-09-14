@@ -25,7 +25,21 @@ Esto con el objetivo de que el generador tenga un tono y estilo similar a los co
 ## Metodología
 
 ### Fine-Tuning
-![Evaluación de Calidad](./figures/fine_tunning.png)
+Para entrenar el modelo, se utilizó un enfoque de fine-tuning, que consiste en ajustar un modelo de lenguaje pre-entrenado a un conjunto de datos específico. En este caso, se utilizó el modelo PHI3 de Microsoft como punto de partida y se lo ajustó al dataset de discursos de TED.
+
+El dataset tiene que ser formateado de manera que el modelo pueda entenderlo y aprender de él. Para ello, Phi3 necesit ade una estrucutra como de la siguiente forma:
+    
+    ``` 
+    user: 
+    Crea un discurso al estilo TED-Talk que suene como si fuera dado por un experto en [CAMPO] y que trate sobre [Tematicas]
+
+    asistant:
+    no sé si te has dado cuenta, pero ha habido una serie de libros que han salido últimamente contemplando o especulando sobre la cognición y la vida emocional..
+    ```
+
+
+![Arquitectura RAG](./figures/fine_tunning.png)
+
 ### Retriever-Agnostic Generation (RAG)
 
 ![Arquitectura RAG](./figures/RAG_flow.png)
@@ -43,6 +57,11 @@ Nuestro modelo ha demostrado una capacidad impresionante para generar discursos 
 El sistema ha mostrado una gran adaptabilidad, siendo capaz de generar discursos convincentes sobre una amplia gama de temas, desde política y economía hasta tecnología y cultura.
 
 ### Comparacion Fine-Tuning vs RAG
+
+
+| Nota | Explicación |
+|------|-------------|
+| No worries, it's a common mix-up! | The key difference is that permutations care about the order of arrangement, while combinations don't. Think of permutations as the 'pickier' of the two. 😉 |
 
 
 ## Implementación
