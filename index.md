@@ -13,12 +13,6 @@ Este proyecto tiene como objetivo desarrollar un generador de discursos de texto
 
 En esta ocasión se van a explorar dos enfoques para la generación de discursos: Fine-Tuning y Retrieval Augmented Generation (RAG).
 
-## Objetivos
-
-- Desarrollar un modelo de lenguaje capaz de generar texto coherente y contextualmente relevante.
-- Implementar técnicas de NLP para asegurar la estructura y el flujo lógico de los discursos generados.
-- Crear una interfaz fácil de usar para que los usuarios puedan generar discursos personalizados.
-
 ## Dataset
 
 Para conformar la base de datos, se realizó el scraping de alrededor de 1200 discursos de diversos temas, todos provenientes de la misma fuente: las conocidas conferencias TED. Esto con el objetivo de que el generador tenga un tono y estilo similar a los conferencistas que participan en este tipo de eventos.
@@ -134,6 +128,6 @@ Basado en la figura anterior el enfoque RAG logra una mejor capacidad predictiva
 ## Referencias
 
 - [Microsoft Phi3 Mini-4K](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct)
-- [LLAMA3.1](https://huggingface.co/llama-3-1)
+- [LLAMA3.1](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)
 - [Retrieval-Augmented Generation](https://arxiv.org/pdf/2312.10997)
 - [Repositorio en GitHub](https://github.com/balechon/GeneradorDiscursos)
